@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Web;
+namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\UserStoreRequest;
@@ -33,7 +33,7 @@ class UserController extends Controller implements HasMiddleware
     {
         $users = User::all();
 
-        return view('pages.app.user.index', compact('users'));
+        return view('pages.admin.user.index', compact('users'));
     }
 
     /**
@@ -43,7 +43,7 @@ class UserController extends Controller implements HasMiddleware
     {
         $roles = Role::all();
 
-        return view('pages.app.user.create', compact('roles'));
+        return view('pages.admin.user.create', compact('roles'));
     }
 
     /**
@@ -60,9 +60,9 @@ class UserController extends Controller implements HasMiddleware
 
             $user->assignRole($request->role);
 
-            return redirect()->route('app.user.index')->with('success', 'User created successfully.');
+            return redirect()->route('admin.user.index')->with('success', 'User berhasil dibuat.');
         } catch (\Exception $e) {
-            return back()->withErrors(['error' => 'Failed to create user, ' . $e->getMessage()]);
+            return back()->withErrors(['error' => $e->getMessage()]);
         }
     }
 
@@ -73,7 +73,7 @@ class UserController extends Controller implements HasMiddleware
     {
         $user = User::find($id);
 
-        return view('pages.app.user.show', compact('user'));
+        return view('pages.admin.user.show', compact('user'));
     }
 
     /**
@@ -85,7 +85,7 @@ class UserController extends Controller implements HasMiddleware
 
         $roles = Role::all();
 
-        return view('pages.app.user.edit', compact('user', 'roles'));
+        return view('pages.admin.user.edit', compact('user', 'roles'));
     }
 
     /**
@@ -97,7 +97,7 @@ class UserController extends Controller implements HasMiddleware
             $user = User::find($id);
 
             if ($user->id === Auth::user()->id) {
-                return back()->with(['error' => 'You cannot update your own account.']);
+                return back()->with(['error' => 'Kamu tidak dapat memperbarui akun Anda.']);
             }
 
             $user->update([
@@ -108,9 +108,9 @@ class UserController extends Controller implements HasMiddleware
 
             $user->syncRoles($request->role);
 
-            return redirect()->route('app.user.index')->with('success', 'User updated successfully.');
+            return redirect()->route('admin.user.index')->with('success', 'User berhasil diperbarui.');
         } catch (\Exception $e) {
-            return back()->withErrors(['error' => 'Failed to update user, ' . $e->getMessage()]);
+            return back()->withErrors(['error' => $e->getMessage()]);
         }
     }
 
@@ -123,14 +123,14 @@ class UserController extends Controller implements HasMiddleware
             $user = User::findOrFail($id);
 
             if ($user->id === Auth::user()->id) {
-                return back()->with(['error' => 'You cannot delete your own account.']);
+                return back()->with(['error' => 'Kamu tidak dapat menghapus akun Anda.']);
             }
 
             $user->delete();
 
-            return redirect()->route('app.user.index')->with('success', 'User deleted successfully.');
+            return redirect()->route('admin.user.index')->with('success', 'User berhasil dihapus.');
         } catch (\Exception $e) {
-            return back()->withErrors(['error' => 'Failed to delete user, ' . $e->getMessage()]);
+            return back()->withErrors(['error' => $e->getMessage()]);
         }
     }
 }

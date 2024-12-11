@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Web;
+namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\RoleStoreRequest;
@@ -30,7 +30,7 @@ class RoleController extends Controller implements HasMiddleware
     {
         $roles = Role::all();
 
-        return view('pages.app.role.index', compact('roles'));
+        return view('pages.admin.role.index', compact('roles'));
     }
 
     /**
@@ -40,7 +40,7 @@ class RoleController extends Controller implements HasMiddleware
     {
         $permissions = Permission::all();
 
-        return view('pages.app.role.create', compact('permissions'));
+        return view('pages.admin.role.create', compact('permissions'));
     }
 
     /**
@@ -55,9 +55,9 @@ class RoleController extends Controller implements HasMiddleware
 
             $role->syncPermissions($request->permission);
 
-            return redirect()->route('app.role.index')->with('success', 'Role created successfully.');
+            return redirect()->route('admin.role.index')->with('success', 'Role berhasil dibuat.');
         } catch (\Exception $e) {
-            return back()->withErrors(['error' => 'Failed to create role, ' . $e->getMessage()]);
+            return back()->withErrors(['error' => $e->getMessage()]);
         }
     }
 
@@ -68,7 +68,7 @@ class RoleController extends Controller implements HasMiddleware
     {
         $role = Role::find($id);
 
-        return view('pages.app.role.show', compact('role'));
+        return view('pages.admin.role.show', compact('role'));
     }
 
     /**
@@ -80,7 +80,7 @@ class RoleController extends Controller implements HasMiddleware
 
         $permissions = Permission::all();
 
-        return view('pages.app.role.edit', compact('role', 'permissions'));
+        return view('pages.admin.role.edit', compact('role', 'permissions'));
     }
 
     /**
@@ -92,7 +92,7 @@ class RoleController extends Controller implements HasMiddleware
             $role = Role::findOrFail($id);
 
             if ($role->name === 'admin' && $request->name !== 'admin') {
-                return back()->with(['error' => 'You cannot update the name of the admin role.']);
+                return back()->with(['error' => 'Kamu tidak dapat memperbarui nama role admin.']);
             }
 
             $role->update([
@@ -101,7 +101,7 @@ class RoleController extends Controller implements HasMiddleware
 
             $role->syncPermissions($request->permission);
 
-            return redirect()->route('app.role.index')->with('success', 'Role updated successfully.');
+            return redirect()->route('admin.role.index')->with('success', 'Role berhasil diperbarui.');
         } catch (\Exception $e) {
             return back()->withErrors(['error' => $e->getMessage()]);
         }
@@ -116,12 +116,12 @@ class RoleController extends Controller implements HasMiddleware
             $role = Role::findOrFail($id);
 
             if ($role->name === 'admin') {
-                return back()->with(['error' => 'You cannot delete the admin role.']);
+                return back()->with(['error' => 'Kamu tidak dapat menghapus role admin.']);
             }
 
             $role->delete();
 
-            return redirect()->route('app.role.index')->with('success', 'Role deleted successfully.');
+            return redirect()->route('admin.role.index')->with('success', 'Role berhasil dihapus.');
         } catch (\Exception $e) {
             return back()->withErrors(['error' => $e->getMessage()]);
         }
