@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 
 @section('title', 'User')
 
@@ -26,6 +26,7 @@
                             <thead>
                                 <tr>
                                     <th>Name</th>
+                                    <th>Email</th>
                                     <th>Role</th>
                                     <th>Action</th>
                                 </tr>
@@ -34,6 +35,7 @@
                             <tbody>
                                 @foreach ($users as $user)
                                     <tr>
+                                        <td>{{ $user->name }}</td>
                                         <td>{{ $user->email }}</td>
                                         <td>{{ $user->roles->first()->name }}</td>
                                         <td>

@@ -14,6 +14,7 @@ class UserUpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
+            'name' => 'required',
             'email' => 'required|email|unique:users,email,' . $this->route('user'),
             'password' => 'nullable|min:8',
             'role' => 'required|exists:roles,name',
@@ -28,6 +29,7 @@ class UserUpdateRequest extends FormRequest
     public function attributes(): array
     {
         return [
+            'name' => 'Name',
             'email' => 'Email',
             'password' => 'Password',
             'role' => 'Role',
