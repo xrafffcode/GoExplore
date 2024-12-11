@@ -5,7 +5,7 @@
 @section('content')
     <div class="row">
         <div class="col-md-12">
-            <a href="{{ route('app.role.index') }}" class="btn btn-danger mb-3">Back</a>
+            <a href="{{ route('admin.role.index') }}" class="btn btn-danger mb-3">Back</a>
         </div>
 
         <div class="col-md-12">

@@ -7,7 +7,7 @@
 
         @can('user-create')
             <div class="col-md-12">
-                <a href="{{ route('app.user.create') }}" class="btn btn-primary mb-3">Add User</a>
+                <a href="{{ route('admin.user.create') }}" class="btn btn-primary mb-3">Add User</a>
             </div>
         @endcan
 
@@ -39,14 +39,15 @@
                                         <td>
 
                                             @can('user-update')
-                                                <a href="{{ route('app.user.edit', $user->id) }}"
+                                                <a href="{{ route('admin.user.edit', $user->id) }}"
                                                     class="btn btn-warning">Edit</a>
                                             @endcan
 
-                                            <a href="{{ route('app.user.show', $user->id) }}" class="btn btn-info">Show</a>
+                                            <a href="{{ route('admin.user.show', $user->id) }}"
+                                                class="btn btn-info">Show</a>
 
                                             @can('user-delete')
-                                                <form action="{{ route('app.user.destroy', $user->id) }}" method="POST"
+                                                <form action="{{ route('admin.user.destroy', $user->id) }}" method="POST"
                                                     class="d-inline">
                                                     @csrf
                                                     @method('DELETE')

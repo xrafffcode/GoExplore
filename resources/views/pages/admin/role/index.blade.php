@@ -7,7 +7,7 @@
 
         @can('role-create')
             <div class="col-md-12">
-                <a href="{{ route('app.role.create') }}" class="btn btn-primary mb-3">Add Role</a>
+                <a href="{{ route('admin.role.create') }}" class="btn btn-primary mb-3">Add Role</a>
             </div>
         @endcan
 
@@ -39,14 +39,15 @@
                                         <td>
 
                                             @can('role-update')
-                                                <a href="{{ route('app.role.edit', $role->id) }}"
+                                                <a href="{{ route('admin.role.edit', $role->id) }}"
                                                     class="btn btn-warning">Edit</a>
                                             @endcan
 
-                                            <a href="{{ route('app.role.show', $role->id) }}" class="btn btn-info">Show</a>
+                                            <a href="{{ route('admin.role.show', $role->id) }}"
+                                                class="btn btn-info">Show</a>
 
                                             @can('role-delete')
-                                                <form action="{{ route('app.role.destroy', $role->id) }}" method="POST"
+                                                <form action="{{ route('admin.role.destroy', $role->id) }}" method="POST"
                                                     class="d-inline">
                                                     @csrf
                                                     @method('DELETE')

@@ -5,7 +5,7 @@
 @section('content')
     <div class="row">
         <div class="col-md-12">
-            <a href="{{ route('app.role.index') }}" class="btn btn-danger mb-3">Back</a>
+            <a href="{{ route('admin.role.index') }}" class="btn btn-danger mb-3">Back</a>
         </div>
 
         <div class="col-md-12">
@@ -18,7 +18,7 @@
                     <h6 class="m-0 font-weight-bold text-primary">Edit Role</h6>
                 </div>
                 <div class="card-body">
-                    <form action="{{ route('app.role.update', $role->id) }}" method="POST">
+                    <form action="{{ route('admin.role.update', $role->id) }}" method="POST">
                         @csrf
                         @method('PUT')
 

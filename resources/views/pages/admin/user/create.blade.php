@@ -5,7 +5,7 @@
 @section('content')
     <div class="row">
         <div class="col-md-12">
-            <a href="{{ route('app.user.index') }}" class="btn btn-danger mb-3">Back</a>
+            <a href="{{ route('admin.user.index') }}" class="btn btn-danger mb-3">Back</a>
         </div>
 
         <div class="col-md-12">
@@ -18,7 +18,7 @@
                     <h6 class="m-0 font-weight-bold text-primary">Create User</h6>
                 </div>
                 <div class="card-body">
-                    <form action="{{ route('app.user.store') }}" method="POST">
+                    <form action="{{ route('admin.user.store') }}" method="POST">
                         @csrf
 
                         <div class="form-group">
