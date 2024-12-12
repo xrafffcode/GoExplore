@@ -19,20 +19,23 @@
     @endcan
 
     @canany(['place-category-view', 'place-view'])
-        <li
-            class="nav-item {{ request()->is('admin/place-categories*') || request()->is('admin/roles*') ? 'active' : '' }}">
+        <li class="nav-item {{ request()->is('admin/place-category*') || request()->is('admin/place*') ? 'active' : '' }}">
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePlaceManagement"
                 aria-expanded="true" aria-controls="collapsePlaceManagement">
                 <i class="fas fa-fw fa-map-marked-alt"></i>
                 <span>Manajemen Destinasi</span>
             </a>
             <div id="collapsePlaceManagement"
-                class="collapse {{ request()->is('admin/place-category*') || request()->is('admin/role*') ? 'show' : '' }}"
+                class="collapse {{ request()->is('admin/place-category*') || request()->is('admin/place*') ? 'show' : '' }}"
                 aria-labelledby="headingUserManagement" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
-                    @can('user-view')
+                    @can('place-category-view')
                         <a class="collapse-item {{ request()->is('admin/place-category*') ? 'active' : '' }}"
                             href="{{ route('admin.place-category.index') }}">Kategori</a>
+                    @endcan
+                    @can('place-view')
+                        <a class="collapse-item {{ request()->is('admin/place*') ? 'active' : '' }}"
+                            href="{{ route('admin.place.index') }}">Destinasi</a>
                     @endcan
                 </div>
             </div>
@@ -40,7 +43,7 @@
     @endcanany
 
     @canany(['user-view', 'role-view'])
-        <li class="nav-item {{ request()->is('admin/users*') || request()->is('admin/roles*') ? 'active' : '' }}">
+        <li class="nav-item {{ request()->is('admin/user*') || request()->is('admin/role*') ? 'active' : '' }}">
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUserManagement"
                 aria-expanded="true" aria-controls="collapseUserManagement">
                 <i class="fas fa-fw fa-users"></i>

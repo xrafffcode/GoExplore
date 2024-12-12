@@ -19,4 +19,9 @@ class PlaceCategory extends Model
     protected $casts = [
         'is_featured' => 'boolean',
     ];
+
+    public function places()
+    {
+        return $this->hasMany(Place::class);
+    }
 }
