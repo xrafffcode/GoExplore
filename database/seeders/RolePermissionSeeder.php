@@ -14,6 +14,13 @@ class RolePermissionSeeder extends Seeder
             'view',
         ],
 
+        'place-category' => [
+            'view',
+            'create',
+            'update',
+            'delete',
+        ],
+
         'user' => [
             'view',
             'create',

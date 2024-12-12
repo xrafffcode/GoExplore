@@ -18,12 +18,33 @@
         </li>
     @endcan
 
+    @canany(['place-category-view', 'place-view'])
+        <li
+            class="nav-item {{ request()->is('admin/place-categories*') || request()->is('admin/roles*') ? 'active' : '' }}">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePlaceManagement"
+                aria-expanded="true" aria-controls="collapsePlaceManagement">
+                <i class="fas fa-fw fa-map-marked-alt"></i>
+                <span>Manajemen Destinasi</span>
+            </a>
+            <div id="collapsePlaceManagement"
+                class="collapse {{ request()->is('admin/place-category*') || request()->is('admin/role*') ? 'show' : '' }}"
+                aria-labelledby="headingUserManagement" data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                    @can('user-view')
+                        <a class="collapse-item {{ request()->is('admin/place-category*') ? 'active' : '' }}"
+                            href="{{ route('admin.place-category.index') }}">Kategori</a>
+                    @endcan
+                </div>
+            </div>
+        </li>
+    @endcanany
+
     @canany(['user-view', 'role-view'])
         <li class="nav-item {{ request()->is('admin/users*') || request()->is('admin/roles*') ? 'active' : '' }}">
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUserManagement"
                 aria-expanded="true" aria-controls="collapseUserManagement">
                 <i class="fas fa-fw fa-users"></i>
-                <span>User Management</span>
+                <span>Manajemen User</span>
             </a>
             <div id="collapseUserManagement"
                 class="collapse {{ request()->is('admin/user*') || request()->is('admin/role*') ? 'show' : '' }}"
