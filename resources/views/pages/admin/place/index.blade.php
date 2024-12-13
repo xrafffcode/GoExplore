@@ -28,7 +28,7 @@
                                     <th>Kategori</th>
                                     <th>Thumbnail</th>
                                     <th>Nama</th>
-                                    <th>Slug</th>
+                                    <th>No Telepon</th>
                                     <th>Harga</th>
                                     <th>Alamat</th>
                                     <th>Action</th>
@@ -44,7 +44,7 @@
                                                 class="img-thumbnail" width="100">
                                         </td>
                                         <td>{{ $place->name }}</td>
-                                        <td>{{ $place->slug }}</td>
+                                        <td>{{ $place->phone }}</td>
                                         <td>{{ number_format($place->price, 0, ',', '.') }}</td>
                                         <td>{{ $place->address }}</td>
                                         <td>

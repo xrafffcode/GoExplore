@@ -102,7 +102,7 @@
             <div class="swiper visited-swiper">
                 <div class="swiper-wrapper">
                     <!-- item-1 -->
-                    @foreach ($destinations as $destination)
+                    @foreach ($places as $destination)
                         <div class="swiper-slide place-card">
                             <a href="vacation-details.html">
                                 <div class="image position-relative">
@@ -168,4 +168,18 @@
 
 @section('js')
     <script src="{{ asset('assets/frontend/js/preference.js') }}"></script>
+
+    <script>
+        const categories = {!! json_encode($categories) !!};
+
+        localStorage.setItem('categories', JSON.stringify(categories));
+
+        // Memeriksa apakah preferensi sudah diisi (melalui server-side)
+        document.addEventListener('DOMContentLoaded', function() {
+            const preferences = {{ $preferences ? 'true' : 'false' }};
+            if (!preferences) {
+                showPreferenceModal();
+            }
+        });
+    </script>
 @endsection

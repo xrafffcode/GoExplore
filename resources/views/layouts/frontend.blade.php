@@ -7,6 +7,9 @@
 
     <title>@yield('title')</title>
 
+    <!-- csrf token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
     <!-- favicon -->
     <link rel="shortcut icon" href="../assets/images/favicon.png" type="image/x-icon">
 

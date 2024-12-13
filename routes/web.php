@@ -9,11 +9,14 @@ use App\Http\Controllers\Admin\TourGuideController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Frontend\ChatBotController;
 use App\Http\Controllers\Frontend\HomeController;
+use App\Http\Controllers\Frontend\PreferenceController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::get('/chatbot', [ChatBotController::class, 'index'])->name('chatbot');
+
+Route::post('/save-preference', [PreferenceController::class, 'store'])->name('save-preference');
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'auth'], function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
