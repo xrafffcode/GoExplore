@@ -11,7 +11,7 @@
             </a>
         </li>
         <li>
-            <a href="tour-guide.html">
+            <a href="{{ route('tour-guide.index') }}">
                 <i class="fas fa-user-tie"></i>
             </a>
         </li>

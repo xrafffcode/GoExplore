@@ -19,6 +19,7 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/destinations', [FrontendPlaceController::class, 'index'])->name('place.index');
 Route::get('/destination/{slug}', [FrontendPlaceController::class, 'show'])->name('place.show');
 
+Route::get('/tour-guides', [FrontendTourGuideController::class, 'index'])->name('tour-guide.index');
 Route::get('/tour-guide/{slug}', [FrontendTourGuideController::class, 'show'])->name('tour-guide.show');
 
 Route::get('/chatbot', [ChatBotController::class, 'index'])->name('chatbot');

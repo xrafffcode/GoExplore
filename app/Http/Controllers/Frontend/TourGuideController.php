@@ -10,7 +10,9 @@ class TourGuideController extends Controller
 {
     public function index()
     {
-        return view('pages.frontend.tour-guide.index');
+        $guides = TourGuide::all();
+
+        return view('pages.frontend.tour-guide.index', compact('guides'));
     }
 
     public function show($slug)
