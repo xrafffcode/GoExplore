@@ -51,7 +51,7 @@
                                         <h4>{{ $place->name }}</h4>
                                         <p class="d-flex align-items-center gap-04 location">
                                             <img src="{{ asset('assets/frontend/svg/map-marker.svg') }}" alt="icon">
-                                            {{ substr($destination->address, 0, 20) }}...
+                                            {{ substr($place->address, 0, 20) }}...
                                         </p>
                                         <div class="price d-flex align-items-center justify-content-between">
                                             <h3>Rp {{ number_format($place->price, 0, ',', '.') }}</h3>
@@ -78,7 +78,7 @@
                                         <h4>{{ $recommendation->name }}</h4>
                                         <p class="d-flex align-items-center gap-04 location">
                                             <img src="{{ asset('assets/frontend/svg/map-marker.svg') }}" alt="icon">
-                                            {{ $recommendation->address }}
+                                            {{ substr($place->address, 0, 20) }}...
                                         </p>
                                         <div class="price d-flex align-items-center justify-content-between">
                                             <h3>Rp {{ number_format($recommendation->price, 0, ',', '.') }}</h3>
