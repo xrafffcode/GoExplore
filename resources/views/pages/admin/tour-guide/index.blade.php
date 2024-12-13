@@ -1,13 +1,13 @@
 @extends('layouts.admin')
 
-@section('title', 'Kategori')
+@section('title', 'Tour Guide')
 
 @section('content')
     <div class="row">
 
-        @can('place-category-create')
+        @can('tour-guide-create')
             <div class="col-md-12">
-                <a href="{{ route('admin.place-category.create') }}" class="btn btn-primary mb-3">Tambah Kategori</a>
+                <a href="{{ route('admin.tour-guide.create') }}" class="btn btn-primary mb-3">Tambah Tour Guide</a>
             </div>
         @endcan
 
@@ -18,48 +18,44 @@
         <div class="col-md-12">
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">Kategori</h6>
+                    <h6 class="m-0 font-weight-bold text-primary">Tour Guide</h6>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
                         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                             <thead>
                                 <tr>
-                                    <th>Icon</th>
+                                    <th>Destinasi</th>
+                                    <th>Foto Profil</th>
                                     <th>Nama</th>
-                                    <th>Slug</th>
-                                    <th>Kategori Utama</th>
+                                    <th>Harga/Hari</th>
+                                    <th>No Telepon</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
 
                             <tbody>
-                                @foreach ($categories as $category)
+                                @foreach ($guides as $guide)
                                     <tr>
+                                        <td>{{ $guide->place->name }}</td>
                                         <td>
-                                            <img src="{{ asset('storage/' . $category->icon) }}" alt=""
+                                            <img src="{{ asset('storage/' . $guide->image) }}" alt=""
                                                 class="img-thumbnail" width="100">
                                         </td>
-                                        <td>{{ $category->name }}</td>
-                                        <td>{{ $category->slug }}</td>
+                                        <td>{{ $guide->name }}</td>
+                                        <td>Rp {{ number_format($guide->price, 0, ',', '.') }}</td>
+                                        <td>{{ $guide->phone }}</td>
                                         <td>
-                                            @if ($category->is_featured)
-                                                <span class="badge badge-primary">Ya</span>
-                                            @else
-                                                <span class="badge badge-secondary">Tidak</span>
-                                            @endif
-                                        </td>
-                                        <td>
-                                            @can('place-category-update')
-                                                <a href="{{ route('admin.place-category.edit', $category->id) }}"
+                                            @can('tour-guide-update')
+                                                <a href="{{ route('admin.tour-guide.edit', $guide->id) }}"
                                                     class="btn btn-warning">Edit</a>
                                             @endcan
 
-                                            <a href="{{ route('admin.place-category.show', $category->id) }}"
+                                            <a href="{{ route('admin.tour-guide.show', $guide->id) }}"
                                                 class="btn btn-info">Show</a>
 
-                                            @can('place-category-delete')
-                                                <form action="{{ route('admin.place-category.destroy', $category->id) }}"
+                                            @can('tour-guide-delete')
+                                                <form action="{{ route('admin.tour-guide.destroy', $guide->id) }}"
                                                     method="POST" class="d-inline">
                                                     @csrf
                                                     @method('DELETE')

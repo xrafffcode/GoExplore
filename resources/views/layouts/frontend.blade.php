@@ -33,16 +33,27 @@
 
     <!-- home -->
     <link rel="stylesheet" href="{{ asset('assets/frontend/css/home.css') }}">
+
+    <!-- font awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    @yield('css')
 </head>
 
 <body class="scrollbar-hidden">
 
-    <main class="home">
-        @yield('content')
-    </main>
+    @yield('content')
+
+    @if (!request()->routeIs('chatbot'))
+        <a href="{{ route('chatbot') }}" class="chatbot">
+            <i class="fa-solid fa-comment-dots text-white"></i>
+        </a>
+    @endif
 
     <!-- bottom navigation start -->
-    @include('includes.bottom-navigation')
+    @if (!request()->routeIs('chatbot'))
+        @include('includes.bottom-navigation')
+    @endif
     <!-- bottom navigation end -->
 
     <!-- jquery -->
@@ -74,6 +85,8 @@
         type="text/javascript"></script>
 
     <script src="{{ asset('assets/frontend/js/script.js') }}"></script>
+
+    @yield('js')
 </body>
 
 </html>

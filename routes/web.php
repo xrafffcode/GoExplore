@@ -7,10 +7,13 @@ use App\Http\Controllers\Admin\PlaceController;
 use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\TourGuideController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Frontend\ChatBotController;
 use App\Http\Controllers\Frontend\HomeController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
+
+Route::get('/chatbot', [ChatBotController::class, 'index'])->name('chatbot');
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'auth'], function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');

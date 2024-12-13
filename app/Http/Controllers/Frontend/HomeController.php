@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 use App\Models\Place;
 use App\Models\PlaceCategory;
+use App\Models\TourGuide;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -14,7 +15,8 @@ class HomeController extends Controller
         $featuredCategories = PlaceCategory::where('is_featured', true)->get();
         $categories = PlaceCategory::where('is_featured', false)->get();
         $destinations = Place::all();
+        $guides = TourGuide::all();
 
-        return view('pages.frontend.home', compact('featuredCategories', 'categories', 'destinations'));
+        return view('pages.frontend.home', compact('featuredCategories', 'categories', 'destinations', 'guides'));
     }
 }

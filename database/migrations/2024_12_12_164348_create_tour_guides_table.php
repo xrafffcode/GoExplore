@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('slug')->unique();
             $table->longText('description');
+            $table->integer('price');
             $table->string('phone');
             $table->string('total_guides');
             $table->string('total_years');

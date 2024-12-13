@@ -15,6 +15,7 @@ class TourGuide extends Model
         'name',
         'slug',
         'description',
+        'price',
         'phone',
         'total_guides',
         'total_years'
