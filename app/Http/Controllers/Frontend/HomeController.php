@@ -35,11 +35,11 @@ class HomeController extends Controller
         }
 
         // Ambil hasil dari query
-        $places = $query->limit(5)->get();
+        $places = $query->limit(4)->get();
 
         // Jika tidak ada hasil, ambil semua data
         if ($places->isEmpty()) {
-            $places = Place::limit(5)->get();
+            $places = Place::limit(4)->get();
         }
 
         // Ambil kategori yang ditampilkan
