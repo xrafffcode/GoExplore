@@ -142,7 +142,7 @@
             <div class="d-flex gap-24 all-cards scrollbar-hidden">
                 @foreach ($guides as $guide)
                     <!-- item 1 -->
-                    <a href="profile/guide-profile.html" class="d-flex gap-16 item w-fit shrink-0">
+                    <a href="{{ route('tour-guide.show', $guide->slug) }}" class="d-flex gap-16 item w-fit shrink-0">
                         <div class="image position-relative shrink-0">
                             <img src="{{ asset('storage/' . $guide->image) }}" alt="guide"
                                 class="guide-img object-fit-cover img-fluid radius-12">
