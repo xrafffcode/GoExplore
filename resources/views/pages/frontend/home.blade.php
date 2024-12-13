@@ -26,10 +26,11 @@
 
         <!-- search start -->
         <section class="search py-12">
-            <form action="#">
+            <form action="{{ route('place.index') }}">
                 <div class="form-inner w-100 d-flex align-items-center gap-8 radius-24">
                     <img src="{{ asset('assets/frontend/svg/search.svg') }}" alt="search" class="shrink-0">
-                    <input type="search" class="input-search input-field" placeholder="Cari Destinasi..">
+                    <input type="search" class="input-search input-field" name="keyword" placeholder="Cari Destinasi.."
+                        value="{{ request('keyword') }}">
                     <button type="submit" class="btn-search">Cari</button>
                 </div>
             </form>
@@ -39,7 +40,7 @@
         <!-- service start -->
         <section class="service py-12">
             @foreach ($featuredCategories as $category)
-                <a href="service-location.html">
+                <a href="{{ route('place.index', ['category' => $category->name]) }}">
                     <figure class="item text-center">
                         <div class="image rounded-full d-flex align-items-center justify-content-center m-auto">
                             <img src="{{ asset('storage/' . $category->icon) }}" alt="airport"
@@ -75,7 +76,7 @@
                     <div class="modal-body">
                         <!-- item 1 -->
                         @foreach ($categories as $category)
-                            <a href="service-location.html">
+                            <a href="{{ route('place.index', ['category' => $category->name]) }}">
                                 <figure class="item text-center">
                                     <div class="image rounded-full d-flex align-items-center justify-content-center m-auto">
                                         <img src="{{ asset('storage/' . $category->icon) }}" alt="airport"

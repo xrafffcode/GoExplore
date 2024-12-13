@@ -32,21 +32,36 @@ class PlaceController extends Controller
             });
         }
 
+        if ($request->has('keyword')) {
+            $query->where('name', 'like', '%' . $request->keyword . '%');
+        }
+
         // Ambil hasil dari query
         $recomendations = $query->get();
 
         // Jika tidak ada hasil, ambil semua data
         if ($recomendations->isEmpty()) {
-            $recomendations = Place::all();
+
+            if ($request->has('keyword')) {
+                $recomendations = Place::where('name', 'like', '%' . $request->keyword . '%')->get();
+            } else {
+                $recomendations = Place::all();
+            }
         }
+
 
         $places = Place::query();
 
         // Filter berdasarkan category
         if ($request->has('category')) {
             $places->whereHas('placeCategory', function ($q) use ($request) {
-                $q->where('id', $request->category);
+                $q->where('name', $request->category);
             });
+        }
+
+        // Filter berdasarkan keyword
+        if ($request->has('keyword')) {
+            $places->where('name', 'like', '%' . $request->keyword . '%');
         }
 
         // Ambil hasil dari query
