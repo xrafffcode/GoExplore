@@ -116,7 +116,7 @@
                                     <h4>{{ $destination->name }}</h4>
                                     <p class="d-flex align-items-center gap-04 location">
                                         <img src="{{ asset('assets/frontend/svg/map-marker.svg') }}" alt="icon">
-                                        {{ $destination->address }}
+                                        {{ substr($destination->address, 0, 20) }}...
                                     </p>
                                     <div class="price d-flex align-items-center justify-content-between">
                                         <h3>Rp {{ number_format($destination->price, 0, ',', '.') }}</h3>

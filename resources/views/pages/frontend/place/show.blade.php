@@ -10,7 +10,7 @@
 
             <!-- title -->
             <div class="page-title">
-                <a href="{{ route('home') }}"
+                <a href="{{ route('place.index') }}"
                     class="back-btn back-page-btn d-flex align-items-center justify-content-center rounded-full">
                     <img src="{{ asset('assets/frontend/svg/arrow-left-black.svg') }}" alt="arrow">
                 </a>
@@ -57,7 +57,7 @@
                 <div class="d-flex gap-24 all-cards scrollbar-hidden">
                     @forelse ($place->tourGuides as $guide)
                         <!-- item 1 -->
-                        <a href="{{ route('tour-guide.show', $guide->id) }}" class="d-flex gap-16 item w-fit shrink-0">
+                        <a href="{{ route('tour-guide.show', $guide->slug) }}" class="d-flex gap-16 item w-fit shrink-0">
                             <div class="image position-relative shrink-0">
                                 <img src="{{ asset('storage/' . $guide->image) }}" alt="guide"
                                     class="guide-img object-fit-cover img-fluid radius-12">
