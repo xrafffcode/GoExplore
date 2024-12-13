@@ -1,28 +1,18 @@
-<footer class="bottom-nav">
+<footer class="bottom-nav bg-white border-top">
     <ul class="d-flex align-items-center justify-content-around w-100 h-100">
         <li>
             <a href="home.html">
-                <img src="{{ asset('assets/frontend/svg/bottom-nav/home-active.svg') }} " alt="home">
+                <i class="fas fa-home "></i>
             </a>
         </li>
         <li>
             <a href="explore.html">
-                <img src="{{ asset('assets/frontend/svg/bottom-nav/category.svg') }}" alt="category">
+                <i class="fas fa-compass"></i>
             </a>
         </li>
         <li>
-            <a href="ticket-booked.html">
-                <img src="{{ asset('assets/frontend/svg/bottom-nav/ticket.svg') }}" alt="ticket">
-            </a>
-        </li>
-        <li>
-            <a href="wishlist.html">
-                <img src="{{ asset('assets/frontend/svg/bottom-nav/heart.svg') }}" alt="heart">
-            </a>
-        </li>
-        <li>
-            <a href="profile/user-profile.html">
-                <img src="{{ asset('assets/frontend/svg/bottom-nav/profile.svg') }}" alt="profile">
+            <a href="tour-guide.html">
+                <i class="fas fa-user-tie"></i>
             </a>
         </li>
     </ul>
