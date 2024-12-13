@@ -30,6 +30,7 @@
                 <div class="form-inner w-100 d-flex align-items-center gap-8 radius-24">
                     <img src="{{ asset('assets/frontend/svg/search.svg') }}" alt="search" class="shrink-0">
                     <input type="search" class="input-search input-field" placeholder="Cari Destinasi..">
+                    <button type="submit" class="btn-search">Cari</button>
                 </div>
             </form>
         </section>
@@ -104,7 +105,7 @@
                     <!-- item-1 -->
                     @foreach ($places as $destination)
                         <div class="swiper-slide place-card">
-                            <a href="vacation-details.html">
+                            <a href="{{ route('place.show', $destination->slug) }}">
                                 <div class="image position-relative">
                                     <img src="{{ asset('storage/' . $destination->image) }}" alt="desert"
                                         class="img-fluid w-100 overflow-hidden radius-8"
@@ -133,7 +134,7 @@
             <!-- title -->
             <div class="title d-flex align-items-center justify-content-between">
                 <h2 class="shrink-0">Tour Guide</h2>
-                <a href="tour-guide.html" class="shrink-0 d-inline-block">See All</a>
+                <a href="tour-guide.html" class="shrink-0 d-inline-block">Lihat Semua</a>
             </div>
 
             <!-- cards -->
@@ -170,7 +171,7 @@
     <script src="{{ asset('assets/frontend/js/preference.js') }}"></script>
 
     <script>
-        const categories = {!! json_encode($categories) !!};
+        const categories = {!! json_encode($allCategories) !!};
 
         localStorage.setItem('categories', JSON.stringify(categories));
 

@@ -9,10 +9,16 @@ use App\Http\Controllers\Admin\TourGuideController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Frontend\ChatBotController;
 use App\Http\Controllers\Frontend\HomeController;
+use App\Http\Controllers\Frontend\PlaceController as FrontendPlaceController;
 use App\Http\Controllers\Frontend\PreferenceController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
+
+Route::get('/destinations', [FrontendPlaceController::class, 'index'])->name('place.index');
+Route::get('/destination/{slug}', [FrontendPlaceController::class, 'show'])->name('place.show');
+
+Route::get('/tour-guide/{slug}', [FrontendPlaceController::class, 'showTourGuide'])->name('tour-guide.show');
 
 Route::get('/chatbot', [ChatBotController::class, 'index'])->name('chatbot');
 

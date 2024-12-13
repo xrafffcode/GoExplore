@@ -4,11 +4,9 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Place;
-use App\Models\PlaceCategory;
-use App\Models\TourGuide;
 use Illuminate\Http\Request;
 
-class HomeController extends Controller
+class PlaceController extends Controller
 {
     public function index(Request $request)
     {
@@ -35,21 +33,32 @@ class HomeController extends Controller
         }
 
         // Ambil hasil dari query
-        $places = $query->limit(5)->get();
+        $recomendations = $query->get();
 
         // Jika tidak ada hasil, ambil semua data
-        if ($places->isEmpty()) {
-            $places = Place::limit(5)->get();
+        if ($recomendations->isEmpty()) {
+            $recomendations = Place::all();
         }
 
-        // Ambil kategori yang ditampilkan
-        $allCategories = PlaceCategory::all();
-        $featuredCategories = PlaceCategory::where('is_featured', true)->get();
-        $categories = PlaceCategory::where('is_featured', false)->get();
+        $places = Place::query();
 
-        // Ambil data tour guide
-        $guides = TourGuide::all();
+        // Filter berdasarkan category
+        if ($request->has('category')) {
+            $places->whereHas('placeCategory', function ($q) use ($request) {
+                $q->where('id', $request->category);
+            });
+        }
 
-        return view('pages.frontend.home', compact('allCategories', 'featuredCategories', 'categories', 'places', 'guides', 'preferences'));
+        // Ambil hasil dari query
+        $places = $places->get();
+
+        return view('pages.frontend.place.index', compact('places', 'recomendations'));
+    }
+
+    public function show($slug)
+    {
+        $place = Place::where('slug', $slug)->firstOrFail();
+
+        return view('pages.frontend.place.show', compact('place'));
     }
 }

@@ -37,8 +37,15 @@
     <!-- home -->
     <link rel="stylesheet" href="{{ asset('assets/frontend/css/home.css') }}">
 
+    <link rel="stylesheet" href="{{ asset('assets/frontend/css/details.css') }}">
+
+    <link rel="stylesheet" href="{{ asset('assets/frontend/css/explore.css') }}">
+
     <!-- font awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+
 
     @yield('css')
 </head>
@@ -54,7 +61,7 @@
     @endif
 
     <!-- bottom navigation start -->
-    @if (!request()->routeIs('chatbot'))
+    @if (!request()->routeIs('chatbot') && !request()->routeIs('place.show'))
         @include('includes.bottom-navigation')
     @endif
     <!-- bottom navigation end -->
@@ -88,6 +95,8 @@
         type="text/javascript"></script>
 
     <script src="{{ asset('assets/frontend/js/script.js') }}"></script>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
     @yield('js')
 </body>
