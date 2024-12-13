@@ -17,6 +17,7 @@ class PlaceUpdateRequest extends FormRequest
             'name' => 'required|string|max:255',
             'description' => 'required|string',
             'price' => 'required|numeric',
+            'phone' => 'required|string',
             'address' => 'required|string',
             'latitude' => 'required|string',
             'longitude' => 'required|string',
@@ -28,10 +29,11 @@ class PlaceUpdateRequest extends FormRequest
         return [
             'place_category_id' => 'Kategori Destinasi',
             'image' => 'Image',
-            'name' => 'Name',
-            'description' => 'Description',
-            'price' => 'Price',
-            'address' => 'Address',
+            'name' => 'Nama',
+            'description' => 'Deskripsi',
+            'price' => 'Harga',
+            'phone' => 'Nomor Telepon',
+            'address' => 'Alamat',
             'latitude' => 'Latitude',
             'longitude' => 'Longitude',
         ];
@@ -40,24 +42,15 @@ class PlaceUpdateRequest extends FormRequest
     public function messages(): array
     {
         return [
-            'place_category_id.required' => 'Kategori Destinasi wajib diisi',
-            'image.required' => 'Image wajib diisi',
-            'image.image' => 'Image harus berupa gambar',
-            'image.mimes' => 'Image harus berupa jpeg, png, jpg, gif, svg',
-            'image.max' => 'Image maksimal 2MB',
-            'name.required' => 'Name wajib diisi',
-            'name.string' => 'Name harus berupa string',
-            'name.max' => 'Name maksimal 255 karakter',
-            'description.required' => 'Description wajib diisi',
-            'description.string' => 'Description harus berupa string',
-            'price.required' => 'Price wajib diisi',
-            'price.numeric' => 'Price harus berupa angka',
-            'address.required' => 'Address wajib diisi',
-            'address.string' => 'Address harus berupa string',
-            'latitude.required' => 'Latitude wajib diisi',
-            'latitude.string' => 'Latitude harus berupa string',
-            'longitude.required' => 'Longitude wajib diisi',
-            'longitude.string' => 'Longitude harus berupa string',
+            'required' => ':attribute wajib diisi',
+            'image.image' => ':attribute harus berupa gambar',
+            'image.mimes' => ':attribute harus berupa jpeg, png, jpg, gif, svg',
+            'image.max' => ':attribute maksimal 2MB',
+            'exists' => ':attribute tidak valid',
+            'numeric' => ':attribute harus berupa angka',
+            'string' => ':attribute harus berupa teks',
+            'max' => ':attribute maksimal 255 karakter',
+            'unique' => ':attribute sudah ada',
         ];
     }
 }

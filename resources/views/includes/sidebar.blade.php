@@ -42,6 +42,14 @@
         </li>
     @endcanany
 
+    @can('tour-guide-view')
+        <li class="nav-item {{ request()->is('admin/tour-guide*') ? 'active' : '' }}">
+            <a class="nav-link" href="{{ route('admin.tour-guide.index') }}">
+                <i class="fas fa-fw fa-user-tie"></i>
+                <span>Manajemen Tour Guide</span></a>
+        </li>
+    @endcan
+
     @canany(['user-view', 'role-view'])
         <li class="nav-item {{ request()->is('admin/user*') || request()->is('admin/role*') ? 'active' : '' }}">
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUserManagement"

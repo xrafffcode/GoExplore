@@ -54,7 +54,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="name">Name</label>
+                            <label for="name">Nama</label>
                             <input type="text" name="name" id="name"
                                 class="form-control @error('name') is-invalid @enderror"
                                 value="{{ old('name', $place->name) }}" placeholder="Enter name">
@@ -66,7 +66,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="description">Description</label>
+                            <label for="description">Deskripsi</label>
                             <textarea name="description" id="description" cols="30" rows="10"
                                 class="form-control @error('description') is-invalid @enderror">{{ old('description', $place->description) }}</textarea>
                             @error('description')
@@ -77,7 +77,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="price">Price</label>
+                            <label for="price">Harga</label>
                             <input type="text" name="price" id="price"
                                 class="form-control @error('price') is-invalid @enderror"
                                 value="{{ old('price', $place->price) }}" placeholder="Enter price">
@@ -89,7 +89,19 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="address">Address</label>
+                            <label for="phone">Telepon</label>
+                            <input type="text" name="phone" id="phone"
+                                class="form-control @error('phone') is-invalid @enderror"
+                                value="{{ old('phone', $place->phone) }}" placeholder="Enter phone">
+                            @error('phone')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+
+                        <div class="form-group">
+                            <label for="address">Alamat</label>
                             <input type="text" name="address" id="address"
                                 class="form-control @error('address') is-invalid @enderror"
                                 value="{{ old('address', $place->address) }}" placeholder="Enter address">

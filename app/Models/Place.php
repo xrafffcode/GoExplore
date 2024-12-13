@@ -16,6 +16,7 @@ class Place extends Model
         'slug',
         'description',
         'price',
+        'phone',
         'address',
         'latitude',
         'longitude',
@@ -24,5 +25,10 @@ class Place extends Model
     public function placeCategory()
     {
         return $this->belongsTo(PlaceCategory::class);
+    }
+
+    public function tourGuides()
+    {
+        return $this->hasMany(TourGuide::class);
     }
 }

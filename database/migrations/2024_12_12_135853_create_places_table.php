@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('slug')->unique();
             $table->longText('description');
             $table->integer('price');
+            $table->string('phone');
             $table->string('address');
             $table->string('latitude');
             $table->string('longitude');

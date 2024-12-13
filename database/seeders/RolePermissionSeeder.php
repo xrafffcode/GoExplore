@@ -28,6 +28,13 @@ class RolePermissionSeeder extends Seeder
             'delete',
         ],
 
+        'tour-guide' => [
+            'view',
+            'create',
+            'update',
+            'delete',
+        ],
+
         'user' => [
             'view',
             'create',

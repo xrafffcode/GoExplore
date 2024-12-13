@@ -87,6 +87,18 @@
                         </div>
 
                         <div class="form-group">
+                            <label for="phone">Telepon</label>
+                            <input type="text" name="phone" id="phone"
+                                class="form-control @error('phone') is-invalid @enderror" value="{{ old('phone') }}"
+                                placeholder="Masukkan Telepon">
+                            @error('phone')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+
+                        <div class="form-group">
                             <label for="address">Alamat</label>
                             <input type="text" name="address" id="address"
                                 class="form-control @error('address') is-invalid @enderror" value="{{ old('address') }}"
